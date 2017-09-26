@@ -49,8 +49,8 @@ module.exports = {
   models: {
     migrate: 'alter',
 
-    connection: 'localhost',
-    // connection: 'production',
+    // connection: 'localhost',
+    connection: 'production',
 
   },
 
