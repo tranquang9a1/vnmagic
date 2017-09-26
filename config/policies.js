@@ -76,11 +76,11 @@ module.exports.policies = {
   //
   // 'ApiController': ['tokenAuth'],
   //
-  // 'ScpController': ['passport', 'hmacAuth', 'sellerAuth', 'logAuth'], // must be in ordered
-  // 'ProductController': ['passport', 'hmacAuth', 'sellerAuth', 'logAuth'], // must be in ordered
+  'ScpController': ['passport', 'hmacAuth', 'userAuth', 'logAuth'], // must be in ordered
+  // 'ProductController': ['passport', 'hmacAuth', 'userAuth', 'logAuth'], // must be in ordered
   // 'AcpController': ['passport', 'adminAuth', 'logAuth'],
   // 'InventoryController': ['passport', 'adminAuth', 'logAuth'],
-  // 'SaveController': ['passport','sellerAuth', 'logAuth'],
+  // 'SaveController': ['passport','userAuth', 'logAuth'],
   'UserController': ['logAuth'],
   // 'OrderController': ['passport'],
 

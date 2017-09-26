@@ -12,7 +12,7 @@
 
 
     <ul class="right">
-      <% if (!req.session.user) { %>
+      <% if (!req.session.user.id) { %>
       <li><a href="/register"><i class="fa fa-user-plus"></i> <span class="hide-on-small-and-down">Register</span></a></li>
       <li><a href="/login"><i class="fa fa-sign-in"></i> <span class="hide-on-small-and-down">Login</span></a></li>
       <% } else { %>
@@ -45,7 +45,7 @@
   </div>
 </nav>
 
-<ul id="slide-out" class="side-nav">
+<ul id="slide-out" class="side-nav home-nav">
   <li><div class="user-view">
       <div class="background">
         <img src="http://materializecss.com/images/office.jpg">
