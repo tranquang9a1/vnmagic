@@ -1,4 +1,4 @@
 # copyweb
 
-a [Sails](http://sailsjs.org) application
-a [Sweet Alert] (https://sweetalert.js.org/guides/) guides
+* a [Sails](http://sailsjs.org) application
+* [Sweet Alert] (https://sweetalert.js.org/guides/) guides
