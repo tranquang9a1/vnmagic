@@ -1,0 +1,46 @@
+
+<div class="container">
+
+  <div id="sign-in">
+    <h3 class="center-align secondary-color-text text-bold text-shadow">LOGIN FORM</h3>
+    <form id="login-form-submit">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="identifier" name="identifier" type="text"
+                 value="<%=_.get(req.allParams(), 'email','')%>">
+          <label for="identifier">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+          <input id="password" name="password" type="password">
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <button class="btn btn-full btn-large waves-effect waves-light secondary-color" type="submit" name="action">LOGIN
+            <!--<i class="fa fa-send"></i>-->
+          </button>
+        </div>
+      </div>
+      <input type="hidden" name="location" value="<%=_.get(req.allParams(), 'location', 'user')%>" />
+    </form>
+
+    <p class="center-align"><a class="secondary-color-text" href="#">Forgot your password?</a></p>
+    <p class="center-align"><a class="primary-color-text" href="/register">Create new account</a></p>
+    </div>
+
+</div>
+
+<%- partial ('content/quick_menu.ejs') %>
+
+<!--<style>-->
+  <!--body {-->
+    <!--background: #00bcd4;-->
+  <!--}-->
+<!--</style>-->
+

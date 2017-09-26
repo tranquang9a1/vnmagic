@@ -1,0 +1,68 @@
+<nav>
+  <div class="nav-wrapper white">
+
+    <a style="font-size:36px;margin-left:15px;" class="brand-logo left">
+      <span style="font-weight: bold;color:#E57373">LOGO</span>
+      <span style="font-weight:100;margin-left:-10px;color:#546e7a">HERE</span>
+    </a>
+
+    <ul id="nav-mobile" class="right">
+      <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
+    </ul>
+
+
+    <ul class="right">
+      <% if (!req.session.user) { %>
+      <li><a href="/register"><i class="fa fa-user-plus"></i> <span class="hide-on-small-and-down">Register</span></a></li>
+      <li><a href="/login"><i class="fa fa-sign-in"></i> <span class="hide-on-small-and-down">Login</span></a></li>
+      <% } else { %>
+      <li><a class="dropdown-button" data-activates="user-msg" href="#!">
+          <i class="material-icons">message</i><small class="notification-badge active">5</small>
+        </a>
+      </li>
+      <li><a class="dropdown-button" data-activates="user-noty" href="#!">
+          <i class="material-icons">notifications</i><small class="notification-badge active">5</small>
+        </a>
+      </li>
+      <li><a class="dropdown-button" data-activates="user-menu" href="#!">
+          <i class="material-icons">more_vert</i></a>
+      </li>
+      <% } %>
+    </ul>
+
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
+
+      <li><a href="sass.html">HOME</a></li>
+      <li><a href="sass.html">ABOUT</a></li>
+      <li><a href="sass.html">FEATURES</a></li>
+      <li><a href="sass.html">CONTACT</a></li>
+    </ul>
+
+
+
+
+  </div>
+</nav>
+
+<ul id="slide-out" class="side-nav">
+  <li><div class="user-view">
+      <div class="background">
+        <img src="http://materializecss.com/images/office.jpg">
+      </div>
+      <a href="#!user"><img class="circle" src="http://materializecss.com/images/yuna.jpg"></a>
+      <a href="#!name"><span class="white-text name">John Doe</span></a>
+      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+  <li><a href="#!">Second Link</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Subheader</a></li>
+  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+</ul>
+
+<%- partial ('nav-dropdown/user-menu.ejs') %>
+<%- partial ('nav-dropdown/user-msg.ejs') %>
+<%- partial ('nav-dropdown/user-noty.ejs') %>
+
+

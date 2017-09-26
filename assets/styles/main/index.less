@@ -1,0 +1,178 @@
+html {
+  //font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.8px;
+}
+body {
+  background: #f3f3f3;
+  //display: flex;
+  //min-height: 100vh;
+  //flex-direction: column;
+}
+
+a.get-started.btn {
+  font-weight: bold;
+  background: @secondary-color;
+  &:hover{
+    background:@primary-color;
+  }
+}
+
+.text-bold {
+  font-family: 'Anton', sans-serif;
+}
+.text-shadow {
+  text-shadow: 1px 1px 3px #afafaf;
+}
+.text-light-shadow {
+  text-shadow: 0 0 10px #8c8c8c;
+}
+
+.primary-color {
+  background:@primary-color;
+  color:#fff;
+}
+.primary-color-text {
+  color:@primary-color!important;
+}
+
+.secondary-color {
+  background:@secondary-color;
+  color:#fff;
+}
+.secondary-color-text {
+  color:@secondary-color!important;
+}
+
+section#info {
+  padding:40px 0 10px;
+  background: #fff;
+  img.section-info-img {
+    max-width:60%;
+  }
+}
+
+
+
+#sign-in {
+  max-width: 500px;
+  margin:0 auto;
+}
+//#user-menu {
+//  background-color: rgba(255, 255, 255, 0.15);
+//  li:hover {
+//    background-color: rgba(38, 166, 154, 0.10);
+//  }
+//  a:hover{
+//    background: none;
+//  }
+//}
+#user-msg, #user-noty {
+  min-width:400px !important;
+}
+.collection .collection-item.collection-fix {
+  min-height: 64px;
+  .title {
+    padding:0!important;
+  }
+}
+nav {
+  .dropdown-button {
+    height: 64px;
+  }
+  .notification-badge {
+    display: none;
+    position: relative;
+    left: 14px;
+    top: -56px;
+    color: #ffffff;
+    background-color: @secondary-color;
+    border-radius: 50%;
+    padding: 4px 8px;
+    line-height: 15px;
+    &.active{
+      display:block;
+    }
+  }
+}
+
+input {
+  color:#000;
+  letter-spacing: 0.8px;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+}
+
+form {
+  box-shadow: 0 0 17px #ccc;
+  border-radius: 8px;
+  color:#bfbfbf;
+  background: #fff;
+  padding:30px;
+  .row {
+    margin-bottom:10px;
+  }
+}
+
+.btn-full {
+  width:100%;
+}
+.btn-long {
+  height: 42px;
+  padding: 5px 60px;
+}
+.slider-button {
+  margin-top:100px;
+}
+.fixed-announcement{
+  position: relative;
+  background:#546e7a;
+  height: 28px;
+  width: 100%;
+  z-index: 999;
+}
+//Overwrite
+
+.input-field .prefix {
+  top:8px;
+}
+.input-field .prefix.active{
+  color:@primary-color
+}
+
+.btn:hover, .btn-large:hover{
+  background-color: #f37c7c;
+}
+.promo-caption {
+  font-weight: 500;
+  font-size:18px;
+}
+.swal-button{
+  background: @primary-color;
+}
+.swal-content__input{
+  color: @primary-color;
+  font-size: 20px!important;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.side-nav {
+  margin-top:64px;
+}
+
+nav ul a{
+  color:@primary-color;
+  &:hover{
+    background: @secondary-color;
+    color:#fff;
+  }
+}
+
+.input-field .error{
+  color: rgb(244, 67, 54);
+  font-size: 12px;
+  margin-left: 44px;
+  margin-top: -18px;
+}

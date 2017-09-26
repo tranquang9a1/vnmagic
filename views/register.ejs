@@ -1,0 +1,62 @@
+<div class="container">
+  <div id="sign-in">
+    <h2 class="center-align secondary-color-text text-bold text-shadow">REGISTER FORM</h2>
+    <form id="register-form-submit">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">assignment_ind</i>
+          <input id="fullname" name="fullname" type="text">
+          <label for="fullname">Full Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="username" name="username" type="text">
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email" name="email" type="email">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+          <input id="password" name="password" type="password">
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+          <input id="confirm_password" name="confirm_password" type="password">
+          <label for="confirm_password">Confirm Password</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <button class="btn btn-full btn-large waves-effect waves-light secondary-color" type="submit" name="action">REGISTER
+            <!--<i class="fa fa-send"></i>-->
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <p class="secondary-color-text center-align">Already a member? <a class="primary-color-text" href="/login">login now</a></p>
+  </div>
+</div>
+
+<%- partial ('content/quick_menu.ejs') %>
+
+
+<!--<style>-->
+  <!--body {-->
+    <!--background: #00bcd4;-->
+  <!--}-->
+<!--</style>-->
