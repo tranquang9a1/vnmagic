@@ -40,7 +40,6 @@ $(function() {
     socket.post('/user/register',data, function(result){
       let { error, location, user } = result;
       console.log('register result', error);
-      console.log('register result', error.email);
       console.log('result', result);
 
       if(user && location) {
@@ -108,7 +107,7 @@ $(function() {
     },
     errorElement : 'div',
     errorPlacement: function(error, element) {
-      var placement = $(element).data('error');
+      let placement = $(element).data('error');
       if (placement) {
         $(placement).append(error)
       } else {

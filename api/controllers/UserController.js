@@ -1,4 +1,4 @@
-/**
+/*
  * Authentication Controller
  */
 module.exports = {
@@ -19,7 +19,6 @@ module.exports = {
                               })
                               .catch(err => {
                                 sails.log.error('user:register err', JSON.stringify(err));
-
                                 result.error = JSON.stringify(_.get(err, 'invalidAttributes', {}));
                               });
 
