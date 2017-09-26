@@ -22,10 +22,18 @@ module.exports = {
   //   connection: 'someMongodbServer'
   // },
   globals: {
-    baseUrl: 'http://localhost:1337'
+    baseUrl: 'http://beta.vnmagic.net'
   },
   connections: {
 
+    production: {
+      adapter: 'sails-postgresql',
+      host: '104.198.236.57',
+      user: 'postgres', // optional
+      port: '5432',
+      password: '', // optional
+      database: 'nodeapp' //optional
+    },
 
     localhost: {
       adapter: 'sails-postgresql',
@@ -41,7 +49,8 @@ module.exports = {
   models: {
     migrate: 'alter',
 
-    connection: 'localhost',
+    // connection: 'localhost',
+    connection: 'production',
 
   },
 
