@@ -1,0 +1,50 @@
+<!-- Navbar goes here -->
+<div id="user-page">
+  <header>
+    <nav class="top-nav primary-color">
+      <div class="nav-wrapper">
+        <a href="/scp" class="breadcrumb">SCP</a>
+        <a class="breadcrumb">STORE</a>
+      </div>
+    </nav>
+    <%- partial ('site-menu.ejs') %>
+  </header>
+
+  <!-- Page Layout here -->
+  <main id="main-store">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <ul class="collection center-align">
+            <li class="collection-item">
+              <img class="shopify-logo" src="/images/shopify.png">
+              <p class="primary-color-text">Connect to your Shopify Store</p>
+
+              <form id="shopify-connect-form" method="post" action="/shopify">
+                <div class="input-field">
+                  <input class="hiddendiv" name="uid" value="<%= req.session.user.id %>">
+                  <input id="shopifyname" name="shopifyname" type="text">
+                  <label for="shopifyname">Store Name</label>
+                  <span class="input-domain">.myshopify.com</span>
+                </div>
+                <div class="input-field">
+                  <button class="shopify-connect btn btn-full waves-effect btn-large waves-light secondary-color" type="submit" name="action">
+                    <i class="fa fa-refresh"></i> CONNECT
+                  </button>
+                </div>
+              </form>
+
+            </li>
+            <li class="collection-item">
+              <h5 class="secondary-color-text">New to Shopify?</h5>
+              <p class="primary-color-text">Shopify is everything you need to sell anything in anywhere</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+</div>
+

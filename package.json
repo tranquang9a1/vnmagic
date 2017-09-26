@@ -38,6 +38,7 @@
     "sails-disk": "~0.10.9",
     "sails-hook-babel": "^6.0.3",
     "sails-postgresql": "^0.11.4",
+    "shopify-node-api": "^1.8.0",
     "socket.io-redis": "1.0.0",
     "superagent": "^3.6.0"
   },

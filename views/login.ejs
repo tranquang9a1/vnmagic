@@ -27,7 +27,7 @@
           </button>
         </div>
       </div>
-      <input type="hidden" name="location" value="<%=_.get(req.allParams(), 'location', 'user')%>" />
+      <input type="hidden" name="location" value="<%=_.get(req.allParams(), 'location', '/')%>" />
     </form>
 
     <p class="center-align"><a class="secondary-color-text" href="#">Forgot your password?</a></p>
@@ -38,9 +38,4 @@
 
 <%- partial ('content/quick_menu.ejs') %>
 
-<!--<style>-->
-  <!--body {-->
-    <!--background: #00bcd4;-->
-  <!--}-->
-<!--</style>-->
 
