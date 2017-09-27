@@ -22,6 +22,17 @@ module.exports = {
     }else{
       res.redirect('/');
     }
-  }
+  },
+  app: async(req,res)=> {
+    res.send(200);
+    console.log('params', req.allParams());
+    let { shop } = req.allParams();
+    let foundShop = await Shop.findOne({name:shop});
+
+    let { id } = foundShop;
+    await Shop.destroy({id});
+    await ShopifyToken.destroy({shop:id})
+
+  },
 };
 
