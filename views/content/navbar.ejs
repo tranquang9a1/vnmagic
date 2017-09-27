@@ -12,7 +12,7 @@
 
 
     <ul class="right">
-      <% if (!req.session.user.id) { %>
+      <% if (!req.session.user) { %>
       <li><a href="/register"><i class="fa fa-user-plus"></i> <span class="hide-on-small-and-down">Register</span></a></li>
       <li><a href="/login"><i class="fa fa-sign-in"></i> <span class="hide-on-small-and-down">Login</span></a></li>
       <% } else { %>

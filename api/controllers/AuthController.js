@@ -48,7 +48,7 @@ module.exports = {
    */
   logout: function (req, res) {
     req.session.passport = {}
-    req.session.user = {}
+    delete req.session.user;
 
     req.session.authenticated = false;
     req.logout();

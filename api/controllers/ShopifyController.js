@@ -83,7 +83,31 @@ module.exports = {
         });
       });
     });
-  }
+  },
+
+  add_script: async(req,res) => {
+	  let { shop } = req.allParams();
+    let findToken = await Shop.findOne({name:shop}).populate('shopifytoken');
+
+    const Shopify = new ShopifyApi({
+      shop:shop ,
+      shopify_api_key:  apiKey,
+      access_token: findToken.shopifytoken[0].accessToken,
+    });
+
+    let urlData = `/admin/script_tags.json`
+    let postData = {
+      "script_tag": {
+        "event": "onload",
+        "src": "https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/materialize\/0.100.2\/css\/materialize.min.css"
+      }
+    };
+
+    Shopify.post(urlData,postData,(err,data) => {
+      if(err) return res.json(err);
+      return res.json(data);
+    })
+  },
 
 };
 
