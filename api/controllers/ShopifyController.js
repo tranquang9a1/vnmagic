@@ -19,7 +19,7 @@ module.exports = {
           shop: shopifyname,
           shopify_api_key: apiKey,
           shopify_shared_secret: apiSecret,
-          shopify_scope: 'write_products,read_orders,read_customers,write_customers,read_orders,write_orders,read_shipping,write_shipping,read_analytics',
+          shopify_scope: 'read_content,write_content,read_themes, write_themes,read_script_tags, write_script_tags,read_analytics,read_reports, write_reports,read_marketing_events, write_marketing_events,read_price_rules, write_price_rules',
           redirect_uri: 'http://beta.vnmagic.net/shopify/sync_callback',
           nonce: uid // you must provide a randomly selected value unique for each authorization request
         });
