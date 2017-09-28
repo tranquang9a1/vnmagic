@@ -85,6 +85,23 @@ module.exports = {
     });
   },
 
+  remove_store: async(req,res) => {
+	  let { shop } = req.allParams();
+    let url = `https://${shop}/admin/api_permissions/current.json`;
+    let findToken = await Shop.findOne({name:shop}).populate('shopifytoken');
+
+    const Shopify = new ShopifyApi({
+      shop:shop ,
+      shopify_api_key:  apiKey,
+      access_token: findToken.shopifytoken[0].accessToken,
+    });
+
+    Shopify.delete(url,(err) => {
+      if(err) return res.json({msg:'fail'})
+      return res.json({msg:'success'});
+    })
+  },
+
   add_script: async(req,res) => {
 	  let { shop } = req.allParams();
     let findToken = await Shop.findOne({name:shop}).populate('shopifytoken');
