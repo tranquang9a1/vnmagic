@@ -40,6 +40,8 @@ module.exports.routes = {
   '/logout': 'AuthController.logout',
   '/demo': 'DemoController',
 
+  '/.well-known/acme-challenge/8NeW5BqPU0K4jshCULmTwYnI1hlBfUd9rkHWwcqQwUU': 'DemoController.add_ssl'
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
