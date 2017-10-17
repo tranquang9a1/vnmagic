@@ -8,6 +8,8 @@ const token = 'EAACEdEose0cBANTPRIo69ZBN6DgkrQeK6CWKfGsX0i7lH4x4eDqZAZArDR2qZCYs
 // let request = require('request');
 let cheerio = require('cheerio');
 import request from 'superagent';
+// import request from 'request'
+const download = require('image-downloader');
 
 module.exports = {
 	index: async (req,res) => {
@@ -76,6 +78,39 @@ module.exports = {
         console.log('err', err);
         return false;
       });
+  },
+
+  vietcombank: async(req,res) => {
+    let url = `https://www.vietcombank.com.vn/ibanking2015/`;
+    await request.get(url).set('Content-Type', 'application/json')
+                 .then((result) => {
+                   let $ = cheerio.load(result.text);
+                   let test = $('button#btndangnhap').text();
+                   let guid = $('div.img-captcha input[name=captcha-guid1]').val();
+                   console.log('test', test);
+                   console.log('guid', guid);
+                   // Download to a directory and save with the original filename
+                   // const options = {
+                   //   url: `https://www.vietcombank.com.vn/IBanking2015/captcha.ashx?guid=${guid}`,
+                   //   dest: '/images'                  // Save to /path/to/dest/image.jpg
+                   // };
+                   // download.image(options)
+                   //         .then(({ filename, image }) => {
+                   //           console.log('File saved to', filename)
+                   //         }).catch((err) => {
+                   //   throw err
+                   // })
+
+                   // res.view('test/vietcombank',{guid})
+                   return res.json(result.text);
+                 }).catch(err => {
+        console.log('err', err);
+        return false;
+      });
+  },
+
+  add_ssl: async(req,res) => {
+      res.send(200,'8NeW5BqPU0K4jshCULmTwYnI1hlBfUd9rkHWwcqQwUU.dkdEl43Ue6ypPGIGVRQ1naN_ASSOpp_wAn9cz3aCJ_g')
   },
 
 };
