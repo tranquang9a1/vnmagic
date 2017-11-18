@@ -17,6 +17,7 @@ let apiBittrex = {
   'apisecret' : 'c56f8d3318c1420992dc6f7e4c2fe0e9'
 }
 let alive = 1;
+let alert = 0;
 
 
 module.exports = {
@@ -40,6 +41,29 @@ module.exports = {
 
       // If the message is "ping"
 
+      if(message.content.startsWith('!alert-') && message.author.id === '378742016265289729'){
+
+        let getData = `${message.content.split('-')[1]}-${message.content.split('-')[2]}`;
+        let alertValue = message.content.split('-')[3];
+        alertValue = parseFloat(alertValue);
+        alert = 1;
+        getData = getData.toUpperCase();
+        console.log('alertValue', alertValue);
+        message.channel.send(`[SET ALERT - ${getData} - ${alertValue}]`);
+        bittrex.websockets.listen((data, client)=> {
+          if (data.M === 'updateSummaryState') {
+            data.A.forEach((data_for) =>{
+              data_for.Deltas.forEach((marketsDelta) => {
+                if(marketsDelta.MarketName == getData && marketsDelta.Last >= alertValue && alert == 1){
+                  console.log(`now: ${marketsDelta.Last}`);
+                  message.channel.send(`[ALERT ${getData}] - NOW: ${marketsDelta.Last}`);
+                  alert = 0;
+                }
+              });
+            });
+          }
+        });
+      }
 
       if (message.content === '!sleep' && message.author.id === '378742016265289729'){
         alive = 0;
@@ -52,17 +76,13 @@ module.exports = {
 
       if(alive == 1){
         if (message.content === '!ping') {
-          // Send "pong" to the same channel
-          // console.log('message', message);
-          // console.log('message', message.author.id);
           message.channel.send('pong');
         }
 
         if (message.content.startsWith('!gia-')){
-
           let getData = message.content.split('!gia-')[1];
           getData = getData.toUpperCase();
-          bittrex.getticker( { market : getData }, function( data, err ) {
+          bittrex.getticker( { market : getData }, (data, err) => {
             if(!err){
               message.channel.send(`[${getData}] BID: ${data.result.Bid} - ASK: ${data.result.Ask} - LAST: ${data.result.Last}`);
             }
@@ -72,20 +92,11 @@ module.exports = {
         if(message.content.startsWith('!candle-')){
           bittrex.getcandles({
             marketName: 'USDT-BTC',
-            tickInterval: 'fiveMin', // intervals are keywords
-          }, function( data, err ) {
-            console.log( data );
+            tickInterval: 1800, // intervals are keywords
+          }, ( data, err ) => {
+            console.log(data);
           });
         }
-
-        // if(message.content.startsWith('!alert-')){
-        //   bittrex.getcandles({
-        //     marketName: 'USDT-BTC',
-        //     tickInterval: 'fiveMin', // intervals are keywords
-        //   }, function( data, err ) {
-        //     console.log( data );
-        //   });
-        // }
 
         if(message.content.startsWith('!vol-')){
           let getData = message.content.split('!vol-')[1];
@@ -117,10 +128,12 @@ module.exports = {
         }
 
         if(message.content.startsWith('!wall-')){
-          let wallvalue = 1000;
+          let wallvalue = 800;
           let getData = message.content.split('!wall-')[1];
           getData = getData.toUpperCase();
-          if(getData == 'USDT-BCC'){
+          if(getData == 'USDT-ETH' || getData == 'USDT-DASH' || getData == 'USDT-ZEC' || getData == 'USDT-XMR'){
+            wallvalue = 300;
+          } else if(getData == 'USDT-BCC'){
             wallvalue = 200;
           } else if(getData == 'USDT-BTC' || getData == 'BTC-BCC'){
             wallvalue = 100;
