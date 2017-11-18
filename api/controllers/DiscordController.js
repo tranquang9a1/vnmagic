@@ -115,6 +115,41 @@ module.exports = {
             message.channel.send(`[SELL ${getData}] - Quantity:${sumSellQuantity} - Total:${sumSellTotal}`);
           });
         }
+
+        if(message.content.startsWith('!wall-')){
+          let wallvalue = 1000;
+          let getData = message.content.split('!wall-')[1];
+          getData = getData.toUpperCase();
+          if(getData == 'USDT-BCC'){
+            wallvalue = 200;
+          } else if(getData == 'USDT-BTC' || getData == 'BTC-BCC'){
+            wallvalue = 100;
+          }
+          bittrex.getorderbook({ market : getData, depth : 10, type : 'both' }, async( data, err )=> {
+            // res.json(data);
+            let wallBuy = [];
+            let wallSell = [];
+            console.log('data.result', data.result);
+            await Promise.all(
+              data.result.buy.map((itembuy)=>{
+                if(itembuy.Quantity>wallvalue){
+                  wallBuy.push(itembuy);
+                }
+              })
+            );
+            await Promise.all(
+              data.result.sell.map((itemsell)=>{
+                if(itemsell.Quantity>wallvalue){
+                  wallSell.push(itemsell);
+                }
+              })
+            );
+
+            message.channel.send(`[${getData}] - Buy Wall: ${wallBuy[0].Quantity}, Rate: ${wallBuy[0].Rate}`);
+            message.channel.send(`[${getData}] - Sell Wall: ${wallSell[0].Quantity}, Rate: ${wallSell[0].Rate}`)
+
+          });
+        }
       }
 
     });
