@@ -44,8 +44,6 @@ module.exports = {
       if (message.content === '!sleep' && message.author.id === '378742016265289729'){
         alive = 0;
         message.channel.send(`Chào anh chị, e đi ngủ đây, a chị ngủ sớm giữ gìn sức khoẻ`)
-      } else {
-        message.channel.send(`Giờ còn sớm mà ngủ gì, quẩy tí đã :D`)
       }
       if (message.content === '!wakeup' && message.author.id === '378742016265289729'){
         alive = 1;
