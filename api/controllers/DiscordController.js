@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing demoes
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+let request = require('request');
 
 import sumby from 'lodash.sumby';
 // Import the discord.js module
@@ -19,6 +20,7 @@ let apiBittrex = {
 let alive = 1;
 let alert = 0;
 
+//375001196810862594 #goc giai tri
 
 module.exports = {
   index: async(req,res) => {
@@ -39,6 +41,25 @@ module.exports = {
 // Create an event listener for messages
     client.on('message', message => {
 
+      if (message.content === '!channel' && message.author.id === '378742016265289729'){
+        console.log('message',message);
+        message.channel.send(`${message.channel.id}`)
+      }
+
+      if(message.content.startsWith('!vcb-')){
+        let getNumber = message.content.split('!vcb-')[1];
+        request.get({
+          url: `https://santienao.com/api/v1/bank_accounts/${getNumber}`
+        },(error,response,body)=>{
+          if(error) {
+            sails.log.error(error);
+          } else {
+            let data = JSON.parse(body);
+            message.channel.send(`${getNumber} - ${data.account_name}`)
+            // sails.sockets.broadcast(params.number_vcb, 'vcb_number/check',{msg:data.account_name});
+          }
+        })
+      }
       // If the message is "ping"
 
       if(message.content.startsWith('!alert-') && message.author.id === '378742016265289729'){
